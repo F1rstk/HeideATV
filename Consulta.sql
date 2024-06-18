@@ -155,8 +155,22 @@ SELECT*FROM recepcionista
 
 
 /*Inserindo Consulta*/
-INSERT INTO consulta(idMedico,idPaciente,idRecepcionista,dataHoraConsulta,TipoConsulta)
+ INSERT INTO consulta(idMedico,idPaciente,idRecepcionista,dataHoraConsulta,TipoConsulta)
 VALUES
 (2,3,2,'2024-06-24 18:30',0)
 
 SELECT*FROM consulta
+
+INSERT INTO consulta(idMedico,idPaciente,idRecepcionista,dataHoraConsulta,TipoConsulta)
+VALUES
+(1,2,3,'2024-06-24 19:30',0)
+
+
+CREATE TABLE paciente(
+/*Exclusão Lógica*/
+STATUS SMALLINT
+);
+UPDATE paciente
+SET STATUS = 0
+WHERE idPaciente = ?
+
