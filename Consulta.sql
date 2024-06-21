@@ -17,6 +17,8 @@
  senha CHAR(8) NOT NULL,
  CRM CHAR(8) NOT NULL
  );
+ 
+ CREATE DATABASE NovaClinnovaclin
  SHOW TABLES /*mostra as tabelas do banco de dados selecionado*/
  /*DROP TABLE medico - apaga a tabela do banco de dados*/
  
@@ -173,4 +175,6 @@ STATUS SMALLINT
 UPDATE paciente
 SET STATUS = 0
 WHERE idPaciente = ?
+
+
 
