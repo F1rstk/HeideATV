@@ -230,10 +230,50 @@ ORDER BY COUNT(idPaciente)DESC;
   FROM paciente
   GROUP BY tipoSanguineo
   HAVING COUNT(idPaciente)>=2
-ORDER BY COUNT(idPaciente)DESC9
+ORDER BY COUNT(idPaciente)DESC
 
 
 
 /*WHERE só funciona com as colunas nativas*/
 /*Having funciona com filtro e função de agregação*/
 /*ORDER BY funciona com todos ou seja função de agregação  ou colunas*/
+
+
+
+/******JOIN********/
+/* Traga o nome do médico, o crm e a data da consulta marcada 
+para ele levando em conta todos os médicos que possuem 
+consultas */
+
+SELECT nomeMedico,nome,crm,dataHoraConsulta FROM medico
+INNER JOIN consulta
+ON medico.idMedico=consulta.idMedico
+INNER JOIN paciente
+ON consulta.idPaciente=paciente.idPaciente;
+
+SELECT*FROM consulta;
+SELECT*FROM medico;
+SELECT*FROM paciente;
+
+
+
+
+SELECT nomeMedico,crm,dataHoraConsulta FROM medico
+LEFT JOIN consulta
+ON medico.idMedico=consulta.idMedico
+
+
+SELECT nomeMedico,crm,dataHoraConsulta FROM medico
+INNER JOIN consulta
+ON medico.idMedico=consulta.idMedico
+
+
+
+
+
+SELECT nomeRecepcionista,celular,dataHoraConsulta FROM recepcionista
+INNER JOIN consulta
+ON recepcionista.idRecepcionista=consulta.idRecepcionista;
+
+SELECT*FROM recepcionista;
+SELECT*FROM consulta;
