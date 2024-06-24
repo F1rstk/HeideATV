@@ -177,4 +177,63 @@ SET STATUS = 0
 WHERE idPaciente = ?
 
 
+/*Funções se Agregação*/
+/*Conta as ocorrencias*/
+SELECT COUNT(idMedico) AS 'Quantidade de Médicos'
+FROM medico
 
+/*Pega o valor máximo/maior: data,hora,inteiro,decimal*/
+SELECT MAX(dataHoraConsulta) FROM consulta
+
+/*Pega o valor mínimo/menor; data,hora,inteiro,decimal*/
+SElECT MIN(dataHoraConsulta) FROM consulta
+/*Realiza a soma dos valores*/
+SELECT SUM(idRecepcionista) FROM recepcionista
+/*Realiza a media arimética simples de determinandos valores*/
+SELECT AVG(idPaciente) FROM paciente
+
+SELECT COUNT(idMedico) AS 'Quantidade de Médicos -MG'
+FROM medico
+WHERE crm LIKE'%MG'
+
+INSERT INTO paciente(nome,cpf,dataNascimento,Tiposanguineo)
+VALUES('Magali','55566677788','2001-07-07 06:55:00','O+'),
+('Mônica','99966677788','2002-10-02 13:22:00','O+'),
+('Cascão','99966611188','2002-12-22 11:21:00','B-'),
+('Penadinho','22266677788','1997-08-01 12:22:00','O-');
+
+SELECT COUNT(idPaciente) AS 'Total Paciente' FROM paciente
+WHERE tipoSanguineo='O+'
+
+
+SELECT tipoSanguineo 'Tipos Sanguineo',
+  COUNT(idPaciente) AS 'Total Paciente'
+  FROM paciente
+ GROUP BY tipoSanguineo
+  
+
+SELECT tipoSanguineo 'Tipos Sanguineo',
+  COUNT(idPaciente) AS 'Total Paciente'
+  FROM paciente
+  WHERE tipoSanguineo LIKE 'O%'
+  GROUP BY tipoSanguineo
+  
+  
+  SELECT tipoSanguineo 'Tipos Sanguineo',
+  COUNT(idPaciente) AS 'Total Paciente'
+  FROM paciente
+  GROUP BY tipoSanguineo
+ORDER BY COUNT(idPaciente)DESC;
+  
+  SELECT tipoSanguineo 'Tipos Sanguineo',
+  COUNT(idPaciente) AS 'Total Paciente'
+  FROM paciente
+  GROUP BY tipoSanguineo
+  HAVING COUNT(idPaciente)>=2
+ORDER BY COUNT(idPaciente)DESC9
+
+
+
+/*WHERE só funciona com as colunas nativas*/
+/*Having funciona com filtro e função de agregação*/
+/*ORDER BY funciona com todos ou seja função de agregação  ou colunas*/
