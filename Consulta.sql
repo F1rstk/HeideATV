@@ -270,10 +270,48 @@ ON medico.idMedico=consulta.idMedico
 
 
 
-
+/*A-*/
 SELECT nomeRecepcionista,celular,dataHoraConsulta FROM recepcionista
 INNER JOIN consulta
 ON recepcionista.idRecepcionista=consulta.idRecepcionista;
 
 SELECT*FROM recepcionista;
 SELECT*FROM consulta;
+
+/*B - Criar uma query que traga o nome do paciente, seu documento,
+o nome do médico, o crm, a data da consulta e o recepcionista 
+que a marcou */
+SELECT nome,cpf,nomeMedico,crm,dataHoraConsulta,nomeRecepcionista FROM paciente
+INNER JOIN consulta
+ON paciente.idPaciente=consulta.idConsulta
+INNER JOIN medico
+ON medico.idMedico=consulta.idConsulta
+INNER JOIN recepcionista
+ON recepcionista.idRecepcionista=consulta.idConsulta
+ 
+/*C - Criar uma query que traga quantas consultas existem 
+na clínica */
+ SELECT COUNT(*) AS Quantidades_Consultas
+ FROM consulta;
+ 
+/*D - Criar uma query que traga o nome do paciente, o email,
+o tipo sanguineo e a data de suas consultas
+mas somente dos pacientes que possuem email*/
+SELECT nome,email,tipoSanguineo,dataHoraConsulta FROM paciente
+INNER JOIN consulta
+ON consulta.idPaciente=paciente.idPaciente
+
+
+ 
+/*E - Criar uma query que traga o nome de TODOS OS paciente, 
+o nome do médico, a data da consulta
+independente de os pacientes possuírem consultas */
+SELECT nome,nomeMedico,dataHoraConsulta FROM paciente
+LEFT JOIN consulta
+ON paciente.idPaciente=consulta.idPaciente
+LEFT JOIN medico
+ON medico.idMedico=consulta.idMedico
+
+
+
+
