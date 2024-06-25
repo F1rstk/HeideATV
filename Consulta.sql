@@ -312,6 +312,11 @@ ON paciente.idPaciente=consulta.idPaciente
 LEFT JOIN medico
 ON medico.idMedico=consulta.idMedico
 
-
-
+/*Desafio Final-Trazer a quantidade de consultas que possou na clinica afrupada por tipo sanguineo do paciente*/
+ SELECT COUNT(consulta.idPaciente) AS 'Qtd Consulta',
+ tipoSanguineo AS 'Tipo Sangue'
+ FROM paciente
+ INNER JOIN consulta
+ ON paciente.idPaciente=consulta.idPaciente
+ GROUP BY tipoSanguineo
 
